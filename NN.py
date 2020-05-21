@@ -214,47 +214,47 @@ model.fit(X_train , y_train , epochs=50)
 # In[30]:
 
 
-model.compile(optimizer=Adam(learning_rate=0.0001),loss='binary_crossentropy')
+#model.compile(optimizer=Adam(learning_rate=0.0001),loss='binary_crossentropy')
 
 
 # In[31]:
 
 
 #first layer is input layer then 2 layer is hidden layer 
-model.add(Dense(units=6, input_dim=11 , activation='relu'))
-model.add(Dense(units=6, activation='relu'))
-model.add(Dense(units=8, activation='relu'))
+#model.add(Dense(units=6, input_dim=11 , activation='relu'))
+#model.add(Dense(units=6, activation='relu'))
+#model.add(Dense(units=8, activation='relu'))
 
 
 # In[32]:
 
 
 #output layer
-model.add(Dense(units=1 , activation='sigmoid')
+#model.add(Dense(units=1 , activation='sigmoid')
 
 
 # In[33]:
 
 
-model.compile(optimizer=Adam(learning_rate=0.000001),loss='binary_crossentropy' )
+#model.compile(optimizer=Adam(learning_rate=0.000001),loss='binary_crossentropy' )
 
 
 # In[34]:
 
 
-model.fit(X_train,y_train , epochs=200 , verbose=0)
+#model.fit(X_train,y_train , epochs=200 , verbose=0)
 
 
 # In[35]:
 
 
-df_loss = pd.DataFrame(model.history.history)
+#df_loss = pd.DataFrame(model.history.history)
 
 
 # In[36]:
 
 
-df_loss.plot()
+#df_loss.plot()
 
 
 # In[ ]:
