@@ -128,13 +128,13 @@ sns.scatterplot(X)
 # In[42]:
 
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 # In[43]:
 
 
-plt.scatter(age , y)
+#plt.scatter(age , y)
 
 
 # In[44]:
