@@ -272,37 +272,37 @@ h = model.fit(X_train, y_train_cat, epochs=20)
 # In[64]:
 
 
-plt.imshow(X_test[0])
+#plt.imshow(X_test[0])
 
 
 # In[65]:
 
 
-y_test[0]
+#y_test[0]
 
 
 # In[66]:
 
 
-model.predict(X_test[0])
+#model.predict(X_test[0])
 
 
 # In[69]:
 
 
-test_img = X_test[0].reshape(28*28)
+#test_img = X_test[0].reshape(28*28)
 
 
 # In[71]:
 
 
-test_img.shape
+#test_img.shape
 
 
 # In[72]:
 
 
-model.predict(test_img)
+#model.predict(test_img)
 
 
 # In[ ]:
