@@ -70,7 +70,7 @@ img1.shape
 # In[15]:
 
 
-import cv2
+#import cv2
 
 
 # In[29]:
@@ -94,13 +94,13 @@ img1.shape
 # In[23]:
 
 
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 
 # In[31]:
 
 
-plt.imshow(img1 , cmap='gray')
+#plt.imshow(img1 , cmap='gray')
 
 
 # In[33]:
