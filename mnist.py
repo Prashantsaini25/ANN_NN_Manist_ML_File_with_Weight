@@ -25,43 +25,61 @@ len(dataset)
 train , test = dataset
 
 
-# In[6]:
+# In[5]:
 
 
 len(train)
 
 
-# In[8]:
+# In[6]:
 
 
 X_train , y_train = train
 
 
-# In[9]:
+# In[7]:
 
 
 X_train.shape
 
 
-# In[10]:
+# In[8]:
 
 
 X_test , y_test = test
 
 
-# In[11]:
+# In[9]:
 
 
 X_test.shape
 
 
-# In[27]:
+# In[10]:
 
 
 img1 = X_train[7]
 
 
-# In[28]:
+# In[11]:
+
+
+img1.shape
+
+
+# In[12]:
+
+
+img1_label = y_train[7]
+
+
+# In[13]:
+
+
+img1_label
+
+
+# In[14]:
 
 
 img1.shape
@@ -70,192 +88,156 @@ img1.shape
 # In[15]:
 
 
-#import cv2
-
-
-# In[29]:
-
-
-img1_label = y_train[7]
-
-
-# In[30]:
-
-
-img1_label
-
-
-# In[22]:
-
-
 img1.shape
 
 
-# In[23]:
-
-
-#import matplotlib.pyplot as plt
-
-
-# In[31]:
-
-
-#plt.imshow(img1 , cmap='gray')
-
-
-# In[33]:
-
-
-img1.shape
-
-
-# In[35]:
+# In[16]:
 
 
 img1_1d = img1.reshape(28*28)
 
 
-# In[36]:
+# In[17]:
 
 
 img1_1d.shape
 
 
-# In[37]:
+# In[18]:
 
 
 X_train.shape
 
 
-# In[39]:
+# In[19]:
 
 
 X_train_1d = X_train.reshape(-1 , 28*28)
 X_test_1d = X_test.reshape(-1 , 28*28)
 
 
-# In[40]:
+# In[20]:
 
 
 X_train_1d.shape
 
 
-# In[41]:
+# In[21]:
 
 
 X_train = X_train_1d.astype('float32')
 X_test = X_test_1d.astype('float32')
 
 
-# In[42]:
+# In[22]:
 
 
 X_train.shape
 
 
-# In[43]:
+# In[23]:
 
 
 y_train.shape
 
 
-# In[44]:
+# In[24]:
 
 
 from keras.utils.np_utils import to_categorical
 
 
-# In[45]:
+# In[25]:
 
 
 y_train_cat = to_categorical(y_train)
 
 
-# In[46]:
+# In[26]:
 
 
 y_train_cat
 
 
-# In[48]:
+# In[27]:
 
 
 y_train_cat[7]
 
 
-# In[49]:
+# In[28]:
 
 
 from keras.models import Sequential
 
 
-# In[50]:
+# In[29]:
 
 
 from keras.layers import Dense
 
 
-# In[51]:
+# In[30]:
 
 
 model = Sequential()
 
 
-# In[52]:
+# In[31]:
 
 
 model.add(Dense(units=512, input_dim=28*28, activation='relu'))
 
 
-# In[53]:
+# In[32]:
 
 
 model.summary()
 
 
-# In[54]:
+# In[33]:
 
 
 model.add(Dense(units=256, activation='relu'))
 
 
-# In[55]:
+# In[34]:
 
 
 model.add(Dense(units=128, activation='relu'))
 
 
-# In[56]:
+# In[35]:
 
 
 model.add(Dense(units=32, activation='relu'))
 
 
-# In[57]:
+# In[36]:
 
 
 model.summary()
 
 
-# In[58]:
+# In[37]:
 
 
 model.add(Dense(units=10, activation='softmax'))
 
 
-# In[59]:
+# In[38]:
 
 
 model.summary()
 
 
-# In[60]:
+# In[39]:
 
 
 from keras.optimizers import RMSprop
 
 
-# In[61]:
+# In[40]:
 
 
 model.compile(optimizer=RMSprop(), loss='categorical_crossentropy', 
@@ -263,46 +245,26 @@ model.compile(optimizer=RMSprop(), loss='categorical_crossentropy',
              )
 
 
-# In[62]:
+# In[41]:
 
 
-h = model.fit(X_train, y_train_cat, epochs=20)
+history = model.fit(X_train, y_train_cat, epochs=1)
 
 
-# In[64]:
+# In[45]:
 
 
-#plt.imshow(X_test[0])
+print(max(history.history['accuracy']))
+if (max(history.history['accuracy'])) > .80 :
+    model.save('model.h5')
 
 
-# In[65]:
+# In[47]:
 
 
-#y_test[0]
-
-
-# In[66]:
-
-
-#model.predict(X_test[0])
-
-
-# In[69]:
-
-
-#test_img = X_test[0].reshape(28*28)
-
-
-# In[71]:
-
-
-#test_img.shape
-
-
-# In[72]:
-
-
-#model.predict(test_img)
+accuracy = open('/root/task31/accuracy.txt','w+')
+accuracy.write (str(history.history['accuracy']))
+accuracy.close()
 
 
 # In[ ]:
